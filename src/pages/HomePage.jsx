@@ -1,12 +1,11 @@
 import React from 'react';
-import ProductsList from '../components/ProductsList';
+// import ProductsList from '../components/ProductsList';
+import CategoryPreview from '../components/CategoryPreview';
 
-const HomePage = () => {
+export default function HomePage() {
   return (
     <div>
-      <ProductsList />
+      <CategoryPreview />
     </div>
   );
-};
-
-export default HomePage;
+}
