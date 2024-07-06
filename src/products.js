@@ -2,7 +2,7 @@
 const products = [
   {
     id: '1',
-    name: 'Basic Tee 6-Pack',
+    name: 'Product 1',
     price: '$192',
     href: '#',
     breadcrumbs: [
@@ -55,7 +55,7 @@ const products = [
   },
   {
     id: '2',
-    name: 'Basic Tee 6-Pack',
+    name: 'Product 2',
     price: '$192',
     href: '#',
     breadcrumbs: [
