@@ -85,9 +85,20 @@ export default function Header() {
           </button>
         </div>
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
+          <NavLink
+            to="/"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
+            Home
+          </NavLink>
           <Popover className="relative">
             <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
-              Shop
+              <NavLink
+                to="/products"
+                className="text-sm font-semibold leading-6 text-gray-900"
+              >
+                Shop
+              </NavLink>
               <ChevronDownIcon
                 className="h-5 w-5 flex-none text-gray-400"
                 aria-hidden="true"
@@ -141,15 +152,24 @@ export default function Header() {
             </PopoverPanel>
           </Popover>
 
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <NavLink
+            to="/events"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
             Events
-          </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            About Us
-          </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          </NavLink>
+          <NavLink
+            to="/about"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
+            About
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
             Contact
-          </a>
+          </NavLink>
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
