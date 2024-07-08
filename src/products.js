@@ -5,6 +5,7 @@ const products = [
     name: 'Product 1',
     price: '$192',
     href: '#',
+    category: 'tops',
     breadcrumbs: [
       { id: 1, name: 'Men', href: '#' },
       { id: 2, name: 'Clothing', href: '#' },
@@ -58,6 +59,7 @@ const products = [
     name: 'Product 2',
     price: '$192',
     href: '#',
+    category: 'bottoms',
     breadcrumbs: [
       { id: 1, name: 'Men', href: '#' },
       { id: 2, name: 'Clothing', href: '#' },
