@@ -6,7 +6,11 @@ const ProductsListPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const typeFilter = searchParams.get('category');
-  console.log(typeFilter);
+  const displayedProducts = typeFilter
+    ? products.filter(
+        (product) => product.category.toLowerCase() === typeFilter
+      )
+    : products;
 
   return (
     <div className="bg-white">
@@ -14,7 +18,7 @@ const ProductsListPage = () => {
         <h2 className="text-2xl font-semibold pb-8">All Products</h2>
 
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          {products.map((product) => (
+          {displayedProducts.map((product) => (
             <Link
               key={product.id}
               to={`/products/${product.id}`}
