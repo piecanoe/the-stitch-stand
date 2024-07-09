@@ -1,20 +1,4 @@
 import React from 'react';
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
-('use client');
-
 import { useState } from 'react';
 import {
   Dialog,
@@ -36,6 +20,7 @@ import {
   PlusIcon,
   Squares2X2Icon,
 } from '@heroicons/react/20/solid';
+import ProductsList from './ProductsList';
 
 const sortOptions = [
   { name: 'Most Popular', href: '#', current: true },
@@ -322,7 +307,7 @@ export default function Example() {
               </form>
 
               {/* Product grid */}
-              <div className="lg:col-span-3">{/* Your content */}</div>
+              <div className="lg:col-span-3">{<ProductsList />}</div>
             </div>
           </section>
         </main>
