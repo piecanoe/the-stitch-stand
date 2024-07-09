@@ -10,7 +10,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function ProductPage() {
+export default function ProductDetailsPage() {
   const { productId } = useParams();
   const product = products.find((product) => product.id === productId);
 
