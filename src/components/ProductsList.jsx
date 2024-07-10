@@ -12,29 +12,49 @@ const ProductsList = () => {
       )
     : products;
 
+  const handleFilterChange = (key, value) => {
+    setSearchParams((prevParams) => {
+      const newParams = new URLSearchParams(prevParams);
+      if (value === null) {
+        newParams.delete(key);
+      } else {
+        newParams.set(key, value);
+      }
+      return newParams;
+    });
+  };
+
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h2 className="text-2xl font-semibold pb-8">All Products</h2>
         <div className="flex-1 flex space-x-4 pb-8">
-          <Link to="?category=tops" className="hover:bg-green-300 p-2 rounded">
+          <button
+            className={`hover:bg-green-500 p-2 rounded ${typeFilter === 'tops' ? `bg-green-400` : ''}`}
+            onClick={() => handleFilterChange('category', 'tops')}
+          >
             Tops
-          </Link>
-          <Link
-            to="?category=bottoms"
-            className="hover:bg-green-300 p-2 rounded"
+          </button>
+          <button
+            className={`hover:bg-green-500 p-2 rounded ${typeFilter === 'bottoms' ? `bg-green-400` : ''}`}
+            onClick={() => handleFilterChange('category', 'bottoms')}
           >
             Bottoms
-          </Link>
-          <Link
-            to="?category=bolo%20ties"
-            className="hover:bg-green-300 p-2 rounded"
+          </button>
+          <button
+            className={`hover:bg-green-500 p-2 rounded ${typeFilter === 'bolo ties' ? `bg-green-400` : ''}`}
+            onClick={() => handleFilterChange('category', 'bolo ties')}
           >
             Bolo Ties
-          </Link>
-          <Link to="." className="hover:bg-green-300 p-2 rounded">
-            Clear Filter
-          </Link>
+          </button>
+          {typeFilter ? (
+            <button
+              className="hover:bg-green-500 p-2 rounded"
+              onClick={() => handleFilterChange('category', null)}
+            >
+              Clear Filter
+            </button>
+          ) : null}
         </div>
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {displayedProducts.map((product) => (
