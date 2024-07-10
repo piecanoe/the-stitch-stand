@@ -5,8 +5,8 @@ import CategoryFilter from '../components/CategoryFilter';
 const ProductsListPage = () => {
   return (
     <div>
-      <CategoryFilter />
-      {/* <ProductsList />; */}
+      {/* <CategoryFilter /> */}
+      <ProductsList />;
     </div>
   );
 };
