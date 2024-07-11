@@ -1,63 +1,36 @@
 import React from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import products from '../products';
 
-const categories = [
-  {
-    name: 'Bolo Ties',
-    description: 'Dress up time',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg',
-    imageAlt:
-      'Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.',
-    href: '#',
-  },
-  {
-    name: 'Tops',
-    description: 'Spice up your jacket',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-02.jpg',
-    imageAlt:
-      'Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.',
-    href: '#',
-  },
-  {
-    name: 'Bottoms',
-    description: 'Gotta have pants',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-03.jpg',
-    imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
-    href: '#',
-  },
-];
-
-export default function CategoryPreview() {
+export default function CategoryPreview({ category }) {
+  const displayedProducts = products.filter(
+    (product) => product.category.toLowerCase() === category.toLowerCase()
+  );
   return (
-    <div className="bg-gray-100">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
-          <h2 className="text-2xl font-bold text-gray-900">Collections</h2>
-
-          <div className="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
-            {categories.map((category) => (
-              <div key={category.name} className="group relative">
-                <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
-                  <img
-                    alt={category.imageAlt}
-                    src={category.imageSrc}
-                    className="h-full w-full object-cover object-center"
-                  />
-                </div>
-                <h3 className="mt-6 text-sm text-gray-500">
-                  <a href={category.href}>
-                    <span className="absolute inset-0" />
-                    {category.name}
-                  </a>
-                </h3>
-                <p className="text-base font-semibold text-gray-900">
-                  {category.description}
-                </p>
+    <div className="bg-white">
+      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-10 lg:max-w-7xl lg:px-8">
+        <div className="flex-1 flex space-x-4 pb-8 text-lg">{category}</div>
+        <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+          {displayedProducts.map((product) => (
+            <Link
+              key={product.id}
+              to={`/products/${product.id}`}
+              className="group"
+            >
+              <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                <img
+                  src={product.images[0].src}
+                  alt={product.images[0].alt}
+                  className="h-full w-full object-cover object-center group-hover:opacity-75"
+                />
               </div>
-            ))}
-          </div>
+              <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
+              <p className="mt-1 text-lg font-medium text-gray-900">
+                {product.price}
+              </p>
+            </Link>
+          ))}
         </div>
       </div>
     </div>
