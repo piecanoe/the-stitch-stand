@@ -4,6 +4,7 @@ import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import ProductsListPage from './pages/ProductsListPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
+import EventsPage from './pages/EventsPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 const router = createBrowserRouter([
@@ -20,8 +21,12 @@ const router = createBrowserRouter([
         element: <ProductsListPage />,
       },
       {
-        path: `/products/:productId`,
+        path: '/products/:productId',
         element: <ProductDetailsPage />,
+      },
+      {
+        path: '/events',
+        element: <EventsPage />,
       },
     ],
     errorElement: <NotFoundPage />,
