@@ -12,9 +12,7 @@ export default function ContactPage() {
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           Let's Connect!
         </h2>
-        <p className="mt-2 text-lg leading-8 text-gray-600">
-          Aute magna irure deserunt veniam aliqua magna enim voluptate.
-        </p>
+        <p className="mt-2 text-lg leading-8 text-gray-600">Say hi! </p>
       </div>
       <form
         action="#"
