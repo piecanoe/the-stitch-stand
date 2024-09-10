@@ -1,8 +1,9 @@
+import { useState, useEffect } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
-import ProductsListPage from './pages/ProductsListPage';
+import ProductsPage from './pages/ProductsPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
 import EventsPage from './pages/EventsPage';
 import NotFoundPage from './pages/NotFoundPage';
@@ -20,10 +21,10 @@ const router = createBrowserRouter([
       },
       {
         path: '/products',
-        element: <ProductsListPage />,
+        element: <ProductsPage />,
       },
       {
-        path: '/products/:productId',
+        path: '/products/:id',
         element: <ProductDetailsPage />,
       },
       {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CategoryPreview from '../components/CategoryPreview';
+// import CategoryPreview from '../components/CategoryPreview';
 
 export default function HomePage() {
   return (
@@ -15,9 +15,9 @@ export default function HomePage() {
           className="object-fill"
           src="https://blog.uberprints.com/content/images/2023/05/cutsom-t-shirt-design-trends-2023-header-1.jpg"
         />
-        <CategoryPreview category="Tops" />
+        {/* <CategoryPreview category="Tops" />
         <CategoryPreview category="Bottoms" />
-        <CategoryPreview category="Bolo Ties" />
+        <CategoryPreview category="Bolo Ties" /> */}
       </div>
     </div>
   );
