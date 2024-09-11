@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProduct } from '../api';
 import { Radio, RadioGroup } from '@headlessui/react';
+import { ProductGallery } from '../components/ProductGallery';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -38,7 +39,7 @@ export default function ProductDetailsPage() {
                     href={breadcrumb.href}
                     className="mr-2 text-sm font-medium text-gray-900"
                   >
-                    {breadcrumb.name}
+                    {breadcrumb.category}
                   </a>
                   <svg
                     fill="currentColor"
@@ -54,59 +55,20 @@ export default function ProductDetailsPage() {
               </li>
             ))}
             <li className="text-sm">
-              {/* <a
-                  href={product.href}
-                  aria-current="page"
-                  className="font-medium text-gray-500 hover:text-gray-600"
-                >
-                  {product.name}
-                </a> */}
+              <a
+                href={product.href}
+                aria-current="page"
+                className="font-medium text-gray-500 hover:text-gray-600"
+              >
+                {product.name}
+              </a>
             </li>
           </ol>
         </nav>
+
         {/* Image gallery */}
-        {product.images && product.images.length > 0 && (
-          <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
-            <div className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
-              {product.images[0] && (
-                <img
-                  alt={product.images[0].alt}
-                  src={product.images[0].src}
-                  className="h-full w-full object-cover object-center"
-                />
-              )}
-            </div>
-            <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-              <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
-                {product.images[1] && (
-                  <img
-                    alt={product.images[1].alt}
-                    src={product.images[1].src}
-                    className="h-full w-full object-cover object-center"
-                  />
-                )}
-              </div>
-              <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
-                {product.images[2] && (
-                  <img
-                    alt={product.images[2].alt}
-                    src={product.images[2].src}
-                    className="h-full w-full object-cover object-center"
-                  />
-                )}
-              </div>
-            </div>
-            <div className="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
-              {product.images[3] && (
-                <img
-                  alt={product.images[3].alt}
-                  src={product.images[3].src}
-                  className="h-full w-full object-cover object-center"
-                />
-              )}
-            </div>
-          </div>
-        )}
+        <ProductGallery product={product} />
+
         {/* Product info */}
         <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
           <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
@@ -170,18 +132,7 @@ export default function ProductDetailsPage() {
                 <p className="text-base text-gray-900">{product.description}</p>
               </div>
             </div>
-            {/* <div className="mt-10">
-              <h3 className="text-sm font-medium text-gray-900">Highlights</h3>
-              <div className="mt-4">
-                <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
-                  {product.highlights?.map((highlight) => (
-                    <li key={highlight} className="text-gray-400">
-                      <span className="text-gray-600">{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div> */}
+
             <div className="mt-10">
               <h2 className="text-sm font-medium text-gray-900">Details</h2>
               <div className="mt-4 space-y-6">
