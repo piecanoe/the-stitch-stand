@@ -38,17 +38,6 @@ const ProductsPage = () => {
 
   return (
     <>
-      {/* <div className="flex flex-col bg-green-300">
-        <h1>products page</h1>
-        {products.map((product) => {
-          return (
-            <Link to={`/products/${product._id}`}>
-              <h1>{product.name}</h1>
-              <h2>{product.category}</h2>
-            </Link>
-          );
-        })}
-      </div> */}
       <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <h2 className="text-2xl font-semibold pb-8">All Products</h2>

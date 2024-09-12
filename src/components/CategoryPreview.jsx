@@ -1,7 +1,7 @@
 // import React from 'react';
 // import { useSearchParams } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
-// import products from '../products';
+// import { getProducts } from '../api';
 
 // export default function CategoryPreview({ category }) {
 //   const displayedProducts = products.filter(
