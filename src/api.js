@@ -3,7 +3,6 @@ import axios from 'axios';
 const URL = 'http://localhost:3000';
 
 //Events
-
 export async function getEvents() {
   //"http://localhost:3000/events"
   const response = await axios.get(`${URL}/events`);
@@ -41,7 +40,6 @@ export async function deleteEvent(id) {
 }
 
 //Products
-
 export async function getProducts() {
   //"http://localhost:3000/products"
   const response = await axios.get(`${URL}/products`);
@@ -77,3 +75,27 @@ export async function deleteProduct(id) {
   const response = await axios.delete(`${URL}/products/${id}`);
   return response;
 }
+
+//Users
+export async function getUser(id) {
+  //"http://localhost:3000/users/12345"
+  const response = await axios.get(`${URL}/users/${id}`);
+
+  if (response.status === 200) {
+    return response.data;
+  } else {
+    return;
+  }
+}
+export async function createUser(user) {
+  //"http://localhost:3000/users"
+  const response = await axios.post(`${URL}/users`, user);
+  return response;
+}
+export async function updateUser(id, user) {
+  //"http://localhost:3000/users/12345"
+  const response = await axios.put(`${URL}/users/${id}`, user);
+  return response;
+}
+
+export asy
