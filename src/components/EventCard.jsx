@@ -6,6 +6,7 @@ export const EventCard = ({ event }) => {
 
   return (
     <div className="m-4 p-4 bg-blue-300 hover:bg-red-300 cursor-pointer rounded-md">
+      <img src={event.img} />
       <h1>{event.name}</h1>
       <h2>{stringDate.slice(4, 15)}</h2>
     </div>
