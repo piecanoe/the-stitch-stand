@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
 import ProductsPage from './pages/ProductsPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
 import EventsPage from './pages/EventsPage';
@@ -19,6 +19,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: '/users/login',
+        element: <LoginPage />,
       },
       {
         path: '/products',

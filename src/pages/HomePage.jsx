@@ -1,6 +1,4 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { CreateUser } from '../components/CreateUser';
 
 export default function HomePage() {
   return (
@@ -16,8 +14,6 @@ export default function HomePage() {
           src="https://blog.uberprints.com/content/images/2023/05/cutsom-t-shirt-design-trends-2023-header-1.jpg"
         />
       </div>
-
-      <CreateUser />
     </div>
   );
 }
