@@ -1,6 +1,9 @@
 import express from 'express';
 import { ObjectId } from 'mongodb';
 import { getDb } from './connect.js';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+dotenv.config({ path: './config.env' });
 
 let eventRoutes = express.Router();
 
@@ -31,7 +34,7 @@ eventRoutes.route('/events/:id').get(async (request, response) => {
 });
 
 //#3 - Create one
-eventRoutes.route('/events').post(async (request, response) => {
+eventRoutes.route('/events').post(verifyToken, async (request, response) => {
   let db = getDb();
   let mongoObject = {
     name: request.body.name,
@@ -43,7 +46,7 @@ eventRoutes.route('/events').post(async (request, response) => {
 });
 
 //#4 - Update one
-eventRoutes.route('/events/:id').put(async (request, response) => {
+eventRoutes.route('/events/:id').put(verifyToken, async (request, response) => {
   let db = getDb();
   let mongoObject = {
     $set: {
@@ -59,12 +62,33 @@ eventRoutes.route('/events/:id').put(async (request, response) => {
 });
 
 //#5 - Delete one
-eventRoutes.route('/events/:id').delete(async (request, response) => {
-  let db = database.getDb();
-  let data = await db
-    .collection('events')
-    .deleteOne({ _id: new ObjectId(request.params.id) });
-  response.json(data);
-});
+eventRoutes
+  .route('/events/:id')
+  .delete(verifyToken, async (request, response) => {
+    let db = database.getDb();
+    let data = await db
+      .collection('events')
+      .deleteOne({ _id: new ObjectId(request.params.id) });
+    response.json(data);
+  });
+
+function verifyToken(request, response, next) {
+  const authHeaders = request.headers['authorization'];
+  const token = authHeaders && authHeaders.split(' ')[1];
+  if (!token) {
+    return response
+      .status(401)
+      .json({ message: 'Authentication token is missing' });
+  }
+
+  jwt.verify(token, process.env.SECRETKEY, (error, user) => {
+    if (error) {
+      response.status(403).json({ message: 'Invalid Token' });
+    }
+
+    request.body.user = user;
+    next();
+  });
+}
 
 export default eventRoutes;

@@ -18,7 +18,7 @@ export default function LoginPage() {
         <>
           <CreateUser />
           <button onClick={() => setView(!view)}>
-            Login to exiting account
+            Login to existing account
           </button>
         </>
       )}

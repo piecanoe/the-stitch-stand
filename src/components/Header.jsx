@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import {
   Dialog,
   DialogPanel,
@@ -57,6 +57,12 @@ function classNames(...classes) {
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    sessionStorage.removeItem('User');
+    navigate('/');
+  }
 
   return (
     <header className="bg-white">
@@ -121,6 +127,15 @@ export default function Header() {
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
             Log in <span aria-hidden="true">&rarr;</span>
           </a>
+        </div>
+        <div>
+          <button
+            href="#"
+            className="text-sm font-semibold leading-6 text-gray-900"
+            onClick={handleLogout}
+          >
+            Log out <span aria-hidden="true">&rarr;</span>
+          </button>
         </div>
       </nav>
       <Dialog

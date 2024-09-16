@@ -1,4 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { useEffect } from 'react';
+import axios from 'axios';
 
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
@@ -54,6 +56,13 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
+  useEffect(() => {
+    let token = sessionStorage.getItem('User');
+    if (token) {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+  }, []);
+
   return (
     <div>
       <RouterProvider router={router} />

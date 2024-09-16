@@ -1,9 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { createEvent } from '../api';
 
 export default function CreateEventPage() {
   const [name, setName] = useState('');
   const [img, setImg] = useState('');
+
+  let user = sessionStorage.getItem('User');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/events');
+    }
+  }, [user]);
 
   async function handleSubmit() {
     let submitObject = {

@@ -1,6 +1,7 @@
 import { verifyUser } from '../api';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export const Login = () => {
   const [user, setUser] = useState({
@@ -21,6 +22,7 @@ export const Login = () => {
     if (response) {
       navigate('/');
       sessionStorage.setItem('User', response);
+      axios.defaults.headers.common['Authorization'] = `Bearer ${response}`;
     } else {
       alert('Login failed');
     }
