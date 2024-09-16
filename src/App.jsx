@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
+import UserPage from './pages/UserPage';
 import LoginPage from './pages/LoginPage';
 import ProductsPage from './pages/ProductsPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
@@ -23,7 +24,11 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: '/users/login',
+        path: '/user/',
+        element: <UserPage />,
+      },
+      {
+        path: '/user/login',
         element: <LoginPage />,
       },
       {
