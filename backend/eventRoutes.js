@@ -39,7 +39,7 @@ eventRoutes.route('/events').post(verifyToken, async (request, response) => {
   let mongoObject = {
     name: request.body.name,
     date: request.body.date,
-    img: request.body.img,
+    imageId: request.body.imageId,
   };
   let data = await db.collection('events').insertOne(mongoObject);
   response.json(data);
@@ -52,7 +52,7 @@ eventRoutes.route('/events/:id').put(verifyToken, async (request, response) => {
     $set: {
       name: request.body.name,
       date: request.body.date,
-      img: request.body.img,
+      imageId: request.body.imageId,
     },
   };
   let data = await db
