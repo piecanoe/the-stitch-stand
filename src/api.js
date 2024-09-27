@@ -17,13 +17,17 @@ export async function getEvent(id) {
   //"http://localhost:3000/events/12345"
   const response = await axios.get(`${URL}/events/${id}`);
 
-  if (response.status === 200) {
-    return response.data;
-  } else {
-    return;
-  }
+  const event = response.data;
+  const data = await getImage(event.imageId);
+  event.image = data;
+  return event;
 }
 export async function createEvent(event) {
+  const data = await createImage(event.file);
+  const imageId = data.data.VersionId;
+
+  event.imageId = imageId;
+
   //"http://localhost:3000/events"
   const response = await axios.post(`${URL}/events`, event);
   return response;
@@ -106,4 +110,28 @@ export async function verifyUser(user) {
   } else {
     return;
   }
+}
+
+//Images
+export async function createImage(file) {
+  const formData = new FormData();
+  formData.append('file', file);
+
+  try {
+    const response = await axios.post(`${URL}/images`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
+    return response;
+  } catch (error) {
+    console.error('Error uploading file:', error);
+    throw error;
+  }
+}
+
+export async function getImage(id) {
+  const response = await axios.get(`${URL}/images/${id}`);
+  return response;
 }
