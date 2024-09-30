@@ -24,7 +24,7 @@ export async function getEvent(id) {
 }
 export async function createEvent(event) {
   const data = await createImage(event.file);
-  const imageId = data.data.VersionId;
+  const imageId = event.file.name;
 
   event.imageId = imageId;
 
