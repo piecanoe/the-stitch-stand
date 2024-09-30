@@ -4,6 +4,7 @@ import { createEvent } from '../api';
 
 export default function CreateEventPage() {
   const [name, setName] = useState('');
+  const [date, setDate] = useState('');
   const [file, setFile] = useState();
 
   const MAX_FILE_SIZE = 15000000;
@@ -22,7 +23,7 @@ export default function CreateEventPage() {
   async function handleSubmit() {
     let submitObject = {
       name: name,
-      date: new Date(),
+      date: date,
       file: file,
     };
 
@@ -35,7 +36,7 @@ export default function CreateEventPage() {
     const fileExtension = file.name.substring(file.name.lastIndexOf('.'));
     if (
       fileExtension != '.jpg' &&
-      fileExtension != '.jpg' &&
+      fileExtension != '.jpeg' &&
       fileExtension != '.png'
     ) {
       alert('File must be jpg or png');
@@ -62,7 +63,14 @@ export default function CreateEventPage() {
         required
         name="name"
       />
-      <label>Image</label>
+      <label>Event Date:</label>
+      <input
+        onChange={(e) => setDate(e.target.value)}
+        maxLength={100}
+        required
+        name="date"
+      />
+      <label>Event Image</label>
       <input type="file" onChange={handleFileUpload} ref={inputFile} required />
       <button type="submit">Submit</button>
     </form>
